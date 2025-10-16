@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detecção de Movimento com Webcam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        #videoContainer {
+            margin: 20px auto;
+            position: relative;
+            width: 640px;
+            height: 480px;
+        }
+        #videoElement {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+        #canvasElement {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Para que o canvas não interfira nos cliques */
+        }
+        #status {
+            margin: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        #movementIndicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            display: inline-block;
+            margin-left: 10px;
+            opacity: 0; /* Inicialmente invisível */
+            transition: opacity 0.3s;
+        }
+        .movement-detected {
+            opacity: 1 !important;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detecção de Movimento com Webcam</h1>
+    <div id="status">
+        Status: <span id="statusText">Carregando...</span>
+        <div id="movementIndicator"></div>
+    </div>
+    <div id="videoContainer">
+        <video id="videoElement" autoplay playsinline></video>
+        <canvas id="canvasElement"></canvas>
+    </div>
+    <div>
+        <button id="startButton">Iniciar Detecção</button>
+        <button id="stopButton">Parar Detecção</button>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
